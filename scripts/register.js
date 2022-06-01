@@ -2,7 +2,7 @@
 let salon={
     name:"The Fashion Pet",
     address:{
-        street:"palomar",
+        street:"1725 Slough Avenue",
         zip:"85756",
         city:"Tucson",
         number:"265-k"
@@ -44,13 +44,21 @@ function Pet(name,age,gender,breed,service,owner,phone){
     this.contactPhone=phone;
 }
 //creating default pets
-    let pet1 = new Pet("Bob",4,"Male","Haircut","Dan",111-111-1112);
-    let pet2 = new Pet("Sparky",1,"Male","Husky","Full","Daniel",520-808-0000);
-    let pet3 = new Pet("Scooby",50,"Male","Dane","Nails Cut","Shaggy",555-111-1111);
-    let pet4 = new Pet("Scrappy",3,"Male","Mixed","Shower","Shaggy",555-111-1111);
+    let pet1 = new Pet("Bob",4,"Male","Mixed","Haircut","Ken",1111111112);
+    let pet2 = new Pet("Sparky",1,"Male","Husky","Full","Daniel",5208080000);
+    let pet3 = new Pet("Scooby",50,"Male","Dane","Nails Cut","Shaggy",5551111111);
+    let pet4 = new Pet("Scrappy",3,"Male","Mixed","Shower","Shaggy",5551111111);
     
     
-    console.log(pet1,pet2,pet3,pet4);
+    //console.log(pet1,pet2,pet3,pet4);
+
+    function isValid(aPet){
+        let valid=true;
+        if(aPet.name==""|| aPet.service==""|| aPet.contactphone==""){
+            valid=false;
+        }
+        return valid;
+    }
 
 //register pets
 function register(){
@@ -65,16 +73,33 @@ function register(){
     let contactPhone=document.getElementById("txtPhone").value;
     //creat the object using the constructor
     let newPet = new Pet(petName,petAge,petGender,petBreed,petService,ownersName,contactPhone)
+    if(isValid(newPet)==true){
     //push the object in on the array
     salon.pets.push(newPet);
-    //display it in the console
-    console.log(newPet);
-    console.log(salon.pets);
+    //display it in the Html
+    displayTable();
+    //console.log(newPet);
+    //console.log(salon.pets);
+    //clear the form
+    clear();
 }
-
+else{
+    alert("Add a name for the pet");
+    }
+}
+function clear(){
+    //let inputs=document.getElementsByTagName(`input`);
+    //let inputs=document.querySelector("input")
+   // for(let i=0;i<inputs.length;i++){
+   //     inputs[i].value="";
+   // }
+    //console.log(inputs);
+    $("input").val("");
+}
 function init(){
     //hook events, triggered events
     displaySalonInfo();
     salon.pets.push(pet1,pet2,pet3,pet4);
+    displayTable();
 }
 window.onload=init;

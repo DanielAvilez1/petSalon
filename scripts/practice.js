@@ -9,7 +9,7 @@ let student = {
     },
     hobbies:["Football","Listen music","Play Zelda"],
     address:{
-        street:"Palomar",
+        street:"1725 Slough Avenue",
         zip:"85756",
         city:"Tucson",
         country:"USA"
